@@ -41,6 +41,7 @@ class App {
     u_contrast: {value: 1.2},
     u_noise: {value: 0.5},
     u_behavior: { value: 0 },
+    u_hardness: {value:  1},
   }
 
   constructor() {
@@ -122,6 +123,7 @@ class App {
     
     this.gui.add(this.ppUniforms.u_noise, 'value', 0.1, 1.0).name('Noise Level');
     this.gui.add(this.ppUniforms.u_contrast, 'value', 0.1, 2.0).name('Contrast Level');
+    this.gui.add(this.ppUniforms.u_hardness, 'value', 0.1, 2.0).name('Hardness Level');
     this.gui.add(this.ppUniforms.u_behavior, 'value', { NightVision: 0, ChromaticAberration: 1 }).name('Effect Type');
   }
 
@@ -134,6 +136,7 @@ class App {
     (this.composer.passes[1] as ShaderPass).uniforms.u_noise.value = this.ppUniforms.u_noise.value; 
     (this.composer.passes[1] as ShaderPass).uniforms.u_contrast.value = this.ppUniforms.u_contrast.value; 
     (this.composer.passes[1] as ShaderPass).uniforms.u_behavior.value = this.ppUniforms.u_behavior.value; 
+    (this.composer.passes[1] as ShaderPass).uniforms.u_hardness.value = this.ppUniforms.u_hardness.value; 
 
     this.controls.update();
     
